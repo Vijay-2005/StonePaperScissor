@@ -9,35 +9,28 @@ const choices = document.querySelectorAll(".choice");
 
 
 const ComputerWon = () => {
-  console.log("You loose!");
+  
   msg.innerText ="You loose!" ;
   compScore += 1 ;
   compscore.innerText = compScore;
 }
 
 const userWon = () => {
-  console.log(" You won!");
+  
  msg.innerText =" You won!" ;
   userScore += 1;
   userscore.innerText = userScore;
 }
 
 const drawGame = () => {
-  console.log(" Game was draw");
+  
 msg.innerText =" Game was draw! play again" ;
 }
   
 
 
 const playGame = (userchoice) => {
-  console.log("userchoice = " ,userchoice );
-
-  const compchoice = genCompChoice();
-  console.log("compchoice = " ,compchoice );
-
-
-
-
+   const compchoice = genCompChoice();
   if (userchoice === compchoice) {
     drawGame();
   }else if (userchoice === "rock" && compchoice === "paper") {
@@ -66,9 +59,18 @@ const randomIdx = Math.floor( Math.random()*3);
 
 
 choices.forEach((choice) => {
-  console.log(choice);
+  
   choice.addEventListener("click", () => {
     const userchoice = choice.getAttribute("id");
      playGame(userchoice);
   });
+});
+
+const resetGame = document.querySelector("#reset-game");
+
+resetGame.addEventListener("click", () => {
+    compScore = 0;
+    userScore = 0;
+    compscore.innerText = 0;
+    userscore.innerText = 0;
 });
